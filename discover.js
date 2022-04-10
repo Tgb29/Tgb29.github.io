@@ -23,19 +23,30 @@ url.search = new URLSearchParams({
 })
 */
 
-const url =
-  "https://api.covalenthq.com/v1/80001/events/address/0xe4E18276D50955aEfa23713A6B3950Cdd2B48092/?starting-block=25115107&ending-block=latest&key=ckey_docs";
+function hello() {
+  console.log()
+}
 
-// Use Fetch API to get Covalent data and display in token table
-fetch(url)
-  .then((resp) => resp.json())
-  .then(function (data) {
-    let tokens = data.data.items;
-    return tokens.map(function (token) {
-      // Map through the results and for each run the code below
-      tableRef.insertRow().innerHTML =
-        `<td> ${token.block_signed_at} </td>` +
-        `<td> ${token.decoded.name} </td>` +
-        `<td> ${token.sender_address} </td>`;
+
+
+const url1 = "https://api.covalenthq.com/v1/80001/events/address/"
+const url2 = "/?starting-block=25115107&ending-block=latest&key=ckey_66758c596cb54b5b9824c81edf9";
+
+function onChange(val) {
+  console.log(val);
+  new_url = url1 + val + url2;
+  fetch(new_url)
+    .then((resp) => resp.json())
+    .then(function (data) {
+      let tokens = data.data.items;
+      return tokens.map(function (token) {
+        // Map through the results and for each run the code below
+        tableRef.insertRow().innerHTML =
+          `<td> ${token.block_signed_at} </td>` +
+          `<td> ${token.decoded.name} </td>` +
+          `<td> ${token.sender_address} </td>`;
+      });
     });
-  });
+}
+
+
