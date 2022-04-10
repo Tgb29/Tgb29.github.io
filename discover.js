@@ -24,7 +24,7 @@ url.search = new URLSearchParams({
 */
 
 const url =
-  "https://api.covalenthq.com/v1/1/events/address/0xc0da01a04c3f3e0be433606045bb7017a7323e38/?starting-block=12115107&ending-block=12240004&key=ckey_docs";
+  "https://api.covalenthq.com/v1/80001/events/address/0xe4E18276D50955aEfa23713A6B3950Cdd2B48092/?starting-block=25115107&ending-block=latest&key=ckey_docs";
 
 // Use Fetch API to get Covalent data and display in token table
 fetch(url)
