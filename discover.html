@@ -1,84 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
-      rel="stylesheet"
-    />
 
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Lato"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
-      rel="stylesheet"
-    />
-    <title>DAOdash</title>
-    <script
-      src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
-      integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk="
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript" defer>
-      window.addEventListener("load", function () {
-        if (typeof web3 !== "undefined") {
-          console.log("Web3 Detected! ");
-          window.web3 = new Web3(web3.currentProvider);
-        } else {
-          console.log("No Web3 Detected... using HTTP Provider");
-          window.web3 = new Web3(
-            new Web3.providers.HttpProvider(
-              "https://mainnet.infura.io/<APIKEY>"
-            )
-          );
-        }
-      });
-      async function getAccount() {
-        const accounts = await ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        var account = accounts[0];
-        localStorage.setItem("account", account);
-        console.log(account);
-        return account;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Lato" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
+  <title>DAOdash</title>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
+    integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+  <script type="text/javascript" defer>
+    window.addEventListener("load", function () {
+      if (typeof web3 !== "undefined") {
+        console.log("Web3 Detected! ");
+        window.web3 = new Web3(web3.currentProvider);
+      } else {
+        console.log("No Web3 Detected... using HTTP Provider");
+        window.web3 = new Web3(
+          new Web3.providers.HttpProvider(
+            "https://mainnet.infura.io/<APIKEY>"
+          )
+        );
       }
-    </script>
-  </head>
-  <body>
-    <!-- TOP NAVIGATION -->
-    <nav>
-      <a href="/index.html" class="button-link" id="factory">Create</a>
-      <a href="/discover.html" class="button-link" id="discover">Discover</a>
-      <!-- <a href="/manage.html" class="button-link" id="manage"> Manage </a> -->
-      <button type="button" onClick="getAccount();" id="manage">Connect</button>
-    </nav>
+    });
+    async function getAccount() {
+      const accounts = await ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      var account = accounts[0];
+      localStorage.setItem("account", account);
+      console.log(account);
+      return account;
+    }
+  </script>
+</head>
 
-    <!-- Main Application -->
-    <main class="app"></main>
-    <h1>NFT DAO Factory</h1>
-    <h2 id="heading">List of NFT Collections</h2>
-    <select id="dropdown" name="collections" required>
-      <option value="" disabled selected hidden>Select NFT Collection</option>
-      <option>0xe4E18276D50955aEfa23713A6B3950Cdd2B48092</option>
-      <option>0xce23999f72cb78e76566B82164F1845B51ddD503</option>
-    </select>
-    <br />
-    <table id="tokenTable" class="content-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Event</th>
-          <th>Sender</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <script src="discover.js"></script>
-  </body>
+<body>
+  <!-- TOP NAVIGATION -->
+  <nav>
+    <a href="/index.html" class="button-link" id="factory">Create</a>
+    <a href="/discover.html" class="button-link" id="discover">Discover</a>
+    <!-- <a href="/manage.html" class="button-link" id="manage"> Manage </a> -->
+    <button type="button" onClick="getAccount();" id="manage">Connect</button>
+  </nav>
+
+  <!-- Main Application -->
+  <main class="app"></main>
+  <h1>NFT DAO Factory</h1>
+  <h2 id="heading">List of NFT Collections</h2>
+  <select onchange="onChange(this.value)" id="dropdown" name="collections" required>
+    <option value="" disabled selected hidden>Select NFT Collection</option>
+    <option value="0xe4E18276D50955aEfa23713A6B3950Cdd2B48092">0xe4E18276D50955aEfa23713A6B3950Cdd2B48092</option>
+    <option value="0xce23999f72cb78e76566B82164F1845B51ddD503">0xce23999f72cb78e76566B82164F1845B51ddD503</option>
+  </select>
+  <br />
+  <table id="tokenTable" class="content-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Event</th>
+        <th>Sender</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="discover.js"></script>
+</body>
+
 </html>
