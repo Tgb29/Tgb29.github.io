@@ -315,9 +315,11 @@ th {
   font-size: 13px;
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  border: 0px;
-  padding: 8px;
-  width: 20%;
+  padding: 50px;
+  width: 500px;
+  border-bottom: 2px rgb(11, 10, 10);
+  height: max-content;
+  align-content: center;
 }
 .container {
   background-color: #00042600;
@@ -421,4 +423,8 @@ input[type="radio"]:checked ~ .check::before {
 
 input[type="radio"]:checked ~ label {
   color: #0dff92;
+}
+.content-table {
+  color: rgb(252, 245, 245);
+  text-align: center;
 }

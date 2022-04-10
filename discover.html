@@ -10,6 +10,15 @@
     />
 
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Lato"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
     <title>DAOdash</title>
     <script
       src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js"
@@ -56,20 +65,19 @@
     <h2 id="heading">List of NFT Collections</h2>
     <select id="dropdown" name="collections" required>
       <option value="" disabled selected hidden>Select NFT Collection</option>
+      <option>0xe4E18276D50955aEfa23713A6B3950Cdd2B48092</option>
+      <option>0xce23999f72cb78e76566B82164F1845B51ddD503</option>
     </select>
     <br />
-    <table id="DAOdisplay" class="content-table">
+    <table id="tokenTable" class="content-table">
       <thead>
         <tr>
-          <th></th>
-          <th>Collection</th>
-          <th>Symbol</th>
-          <th>Supply</th>
-          <th>Description</th>
-          <th>% Votes to Pass</th>
-          <th># NFTs Required</th>
+          <th>Date</th>
+          <th>Event</th>
+          <th>Sender</th>
         </tr>
       </thead>
+      <tbody></tbody>
     </table>
     <script src="discover.js"></script>
   </body>
