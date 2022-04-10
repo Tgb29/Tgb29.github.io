@@ -33,6 +33,7 @@ const url1 = "https://api.covalenthq.com/v1/80001/events/address/"
 const url2 = "/?starting-block=25115107&ending-block=latest&key=ckey_66758c596cb54b5b9824c81edf9";
 
 function onChange(val) {
+  tableRef.innerHTML = "";
   console.log(val);
   new_url = url1 + val + url2;
   fetch(new_url)
